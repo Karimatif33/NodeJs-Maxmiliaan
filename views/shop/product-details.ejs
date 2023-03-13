@@ -1,0 +1,33 @@
+<%- include("../includes/head") %>
+
+    <body>
+        <%- include("../includes/header-nav") %>
+
+
+            <main>
+
+                <h1>
+                    <%= product.title %>
+                </h1>
+                <!-- <hr> -->
+                <div class="imim">
+                    <img src="<%= product.imgeUrl %>" alt="<%= product.title %>">
+                </div>
+                <h2>
+                    <%= product.price %>
+                </h2>
+                <p>
+                    <%= product.description %>
+                </p>
+
+                <%- include("../includes/add-to-cart", {product:product} ) %>
+
+                
+
+            </main>
+
+
+
+    </body>
+
+    </html>
