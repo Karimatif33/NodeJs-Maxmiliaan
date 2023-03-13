@@ -1,0 +1,10 @@
+git push originn master -u
+git commit -m "sec"
+git add .
+git checkout master
+git log
+git branch
+git branch sec
+git status
+touch .DS_store
+ls -a
