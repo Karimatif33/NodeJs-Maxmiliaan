@@ -7,7 +7,7 @@
             <li> <a href="/orders"> Orders </a> </li>
             <li> <a href="/checkout"> Checkout </a> </li>
         
-            <% if (isAuthenticated){ %>
+            <% if (isAuthenticated) { %>
             <li> <a href="/add-product"> Add product </a> </li>
             <li> <a href="/admin-product"> Admin Products </a> </li>
        
@@ -15,8 +15,17 @@
        
        
         </ul>
+
+
+
         <ul class="parent">
+            <% if (!isAuthenticated){ %>
             <li> <a href="/login"> Login </a> </li>
+            <% } %>
+
+           <form action="/logout" method="post">
+            <button class="parent" type="submit">Logout</button>
+        </form>
         </ul>
     </nav>
 </header>

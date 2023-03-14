@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 
    })
 
-app.use( adminRoutes);
+app.use( adminRoutes); 
 app.use(shopRoutes);
 app.use(authRoutes);
 
