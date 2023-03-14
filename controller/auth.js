@@ -12,7 +12,20 @@ exports.getLogin = (req, res, next) => {
 
   // console.log(err)
 };
+exports.getsignup = (req, res, next) => {
+  // const isLoggedIn = req.get('Cookie').trim().split('=')[0]
+  console.log(req.session.isLoggedIn);
+  res.render("auth/signup", {
+    pageTitle: "Signup",
+    path: "/signup",
+    isAuthenticated: false
+  });
 
+  // console.log(err)
+};
+exports.postsignup = (req, res, next) => {
+   
+};
 exports.postLogin = (req, res, next) => {
   User.findById("6408e48e02da98376a8b7f7b")
     .then(user => {

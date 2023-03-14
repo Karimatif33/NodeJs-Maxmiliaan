@@ -30,6 +30,9 @@ app.use(session({secret: 'my secret', resave: false, saveUninitialized: false, s
 
 
 app.use((req, res, next) => {
+  if (!req.session.user){
+    return next()
+  }
   User.findById('6408e48e02da98376a8b7f7b')
     .then(user => {
      req.user = user;

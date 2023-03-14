@@ -4,6 +4,7 @@ const router = express.Router();
 
 // قفلتها وشغلتها من الا admin 
 // router.get('/admin-product', shopController.getIndex);
+router.get('/', shopController.getProducts);
 
 router.get('/product-list', shopController.getProducts);
 

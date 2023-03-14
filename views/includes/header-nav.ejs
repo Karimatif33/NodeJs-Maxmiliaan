@@ -3,14 +3,14 @@
         <ul class="parent">
             <li> <a href="/product-list"> Shop </a> </li>
             <!-- <li> <a href="/">My Products </a> </li> -->
-            <li> <a href="/cart"> cart </a> </li>
-            <li> <a href="/orders"> Orders </a> </li>
-            <li> <a href="/checkout"> Checkout </a> </li>
+
         
             <% if (isAuthenticated) { %>
             <li> <a href="/add-product"> Add product </a> </li>
             <li> <a href="/admin-product"> Admin Products </a> </li>
-       
+            <li> <a href="/cart"> cart </a> </li>
+            <li> <a href="/orders"> Orders </a> </li>
+            <li> <a href="/checkout"> Checkout </a> </li>
                 <% } %>
        
        
@@ -21,11 +21,16 @@
         <ul class="parent">
             <% if (!isAuthenticated){ %>
             <li> <a href="/login"> Login </a> </li>
+            <li> <a href="/sginup"> Sginup </a> </li>
+
             <% } %>
+            <% if (isAuthenticated){ %>
 
            <form action="/logout" method="post">
             <button class="parent" type="submit">Logout</button>
         </form>
+        <% } %>
+
         </ul>
     </nav>
 </header>
