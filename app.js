@@ -1,8 +1,17 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
+const session = require('express-session'); 
+const MongoDBStore = require('connect-mongodb-session')(session); 
+// const MONGODB_URI = 'mongodb+srv://karimatif33:Karim010@ak.vmcunh8.mongodb.net/shop';
+const MONGODB_URI = require('./.Ds_store');
 const bodyParser = require('body-parser');
 const app = express();
+
+
+const store = new MongoDBStore({
+  uri: MONGODB_URI,
+  collection:'session'
+})
 const mongoose = require('mongoose')
 const User = require('./models/user')
 
@@ -17,7 +26,7 @@ const error404 = require('./controller/404')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'my secret', resave: false, saveUninitialized: false}));
+app.use(session({secret: 'my secret', resave: false, saveUninitialized: false, store: store}));
 
 
 app.use((req, res, next) => {
@@ -56,7 +65,8 @@ liveReloadServer.server.once("connection", () => {
 
 //  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-mongoose.connect('mongodb+srv://karimatif33:Karim010@ak.vmcunh8.mongodb.net/shop?retryWrites=true&w=majority')
+mongoose
+.connect(MONGODB_URI)
 .then(result => {
   User.findOne().then(user => {
     if (!user){
