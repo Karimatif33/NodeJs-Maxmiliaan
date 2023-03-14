@@ -6,11 +6,12 @@ exports.getProducts = (req, res, next) => {
   // const products = adminData.products;
   Product.find()
     .then((products) => {
-      console.log(products)
+      // console.log(products)
       res.render("shop/product-list", {
         prods: products,
         pageTitle: "All Products",
         path: "/products",
+        isAuthenticated: req.isLoggedIn
       });
     })
     .catch((err) => console.log(err));
@@ -24,6 +25,7 @@ exports.getProduct = (req, res, next) => {
         product: product,
         pageTitle: product.title,
         path: "/products",
+        isAuthenticated: req.isLoggedIn
       });
     })
     .catch((err) => console.log(err));
@@ -36,6 +38,7 @@ exports.getIndex = (req, res, next) => {
         prods: products,
         pageTitle: "Admin Products",
         path: "/",
+        isAuthenticated: req.isLoggedIn
       });
     })
     .catch((err) => console.log(err));
@@ -60,6 +63,7 @@ exports.getCart = (req, res, next) => {
             pageTitle: "Your Cart",
             path: "/cart",
             products: products,
+            isAuthenticated: req.isLoggedIn
           });
 
     })
@@ -133,6 +137,7 @@ exports.postCart = (req, res, next) => {
           pageTitle: "Orders",
           path: "/orders",
           orders: orders,
+          isAuthenticated: req.isLoggedIn
         });
       })
       .catch((err) => console.log(err));
