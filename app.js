@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   if (!req.session.user){
     return next()
   }
-  User.findById('6408e48e02da98376a8b7f7b')
+  User.findById(req.session.user._id)
     .then(user => {
      req.user = user;
      next();
@@ -44,9 +44,9 @@ app.use((req, res, next) => {
       console.log(err)})
 
    })
-
+ 
 app.use( adminRoutes); 
-app.use(shopRoutes);
+app.use(shopRoutes); 
 app.use(authRoutes);
 
 
@@ -71,21 +71,21 @@ liveReloadServer.server.once("connection", () => {
 mongoose
 .connect(MONGODB_URI)
 .then(result => {
-  User.findOne().then(user => {
-    if (!user){
-      const user = new User({
-        name: 'karim',
-        email: 'karim@test.com',
-        cart: {
-          items: []
-        }
-      })
-      user.save()
-    } else{
-      console.log(user, 'done first think for if')
-    }
+  // // User.findOne().then(user => {
+  // //   if (!user){
+  // //     const user = new User({
+  // //       name: 'karim',
+  // //       email: 'karim@test.com',
+  // //       cart: {
+  // //         items: []
+  // //       }
+  // //     })
+  // //     user.save()
+  // //   } else{
+  // //     // console.log(user, 'done first think for if')
+  // //   }
     
-  })
+  // })
 
  
 app.listen(3000)

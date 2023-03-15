@@ -1,6 +1,7 @@
 const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
+
   res.render("admin/edit-product", {
     pageTitle: "Add Product",
     path: "/admin/add-product",
@@ -91,7 +92,7 @@ exports.getProducts = (req, res, next) => {
   // .select('title price imgeUrl -_id')
   // .populate('userId', 'name')
     .then(products => {
-      console.log(products)
+      // console.log(products)
       res.render("shop/index", {
         prods: products,
         pageTitle: "Admin Products",
