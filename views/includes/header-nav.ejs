@@ -21,12 +21,14 @@
         <ul class="parent">
             <% if (!isAuthenticated){ %>
             <li> <a href="/login"> Login </a> </li>
+
             <li> <a href="/sginup"> Sginup </a> </li>
 
             <% } %>
             <% if (isAuthenticated){ %>
 
            <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button class="parent" type="submit">Logout</button>
         </form>
         <% } %>

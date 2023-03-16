@@ -448,3 +448,41 @@ textarea {
   border-radius: 20px;
   /* font-size: 20px; */
 }
+.user-message {
+  margin: auto;
+  width: 30%;
+  border: 1px solid tomato;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: tomato;
+  color: #ddd;
+}
+
+.user-message--error {
+  margin: auto;
+  width: 30%;
+  border: 1px solid #4771fa;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: tomato;
+  color: #ddd;
+}
+.user-message1 {
+  margin: auto;
+  width: 70%;
+  border: 1px solid tomato;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: tomato;
+  color: #ddd;
+}
+
+.user-message--error1 {
+  margin: auto;
+  width: 70%;
+  border: 1px solid #4771fa;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: tomato;
+  color: #ddd;
+}

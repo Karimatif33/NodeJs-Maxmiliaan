@@ -11,7 +11,7 @@ exports.getProducts = (req, res, next) => {
         prods: products,
         pageTitle: "All Products",
         path: "/products",
-        isAuthenticated: req.session.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn,
       });
     })
     .catch((err) => console.log(err));
@@ -112,7 +112,7 @@ exports.postCart = (req, res, next) => {
         })
         const order = new Order({
           user: {
-            name: req.user.name,
+            email: req.user.email,
             userId: req.user
           },
           products: products
@@ -136,8 +136,7 @@ exports.postCart = (req, res, next) => {
         res.render("shop/orders", {
           pageTitle: "Orders",
           path: "/orders",
-          orders: orders,
-          isAuthenticated: req.session.isLoggedIn
+          orders: orders
         });
       })
       .catch((err) => console.log(err));
