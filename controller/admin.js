@@ -71,24 +71,28 @@ exports.postEditProduct = (req, res, next) => {
   const updatedImageUrl = req.body.imgeUrl;
   const updatedDesc = req.body.description;
 
-Product.findById(prodId).then(product => {
+Product.findById(prodId)
+.then(product => {
+  if (product.userId.toString() !== req.user._id.toString()){
+      return res.redirect("admin-product");
+  } 
   product.title = updatedTitle
   product.price = updatedPrice
   product.imgeUrl = updatedImageUrl
   product.description = updatedDesc
    return product.save()
  
-})
+   .then(result => {
+     console.log("UPDATED PRODUCT!");
+     res.redirect("admin-product");
+   }) 
+  })
+  .catch((err) => console.log(err));
+  };
 
-    .then((result) => {
-      console.log("UPDATED PRODUCT!");
-      res.redirect("admin-product");
-    })
-    .catch((err) => console.log(err));
-};
 
 exports.getProducts = (req, res, next) => {
-  Product.find()
+  Product.find({userId: req.user._id})
   // .select('title price imgeUrl -_id')
   // .populate('userId', 'name')
     .then(products => {

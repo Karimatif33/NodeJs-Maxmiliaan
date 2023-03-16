@@ -8,3 +8,77 @@ git branch sec
 git status
 touch .DS_store
 ls -a
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+JavaScript هي لغة برمجة تستخدم على نطاق واسع في تطوير تطبيقات الويب. إليك بعض الأساسيات حول JavaScript مع بعض الأمثلة لتوضيح كيف يمكن استخدامها:
+
+    المتغيرات (Variables):
+    المتغيرات في JavaScript هي عبارة عن حاويات تحتوي على قيمة. يمكن تعريف المتغيرات باستخدام الكلمة var أو let أو const. الفرق بينهم يعتمد على نطاق ومدى الحياة الخاص بالمتغيرات.
+
+مثال:
+
+javascript
+
+var name = "John";
+let age = 30;
+const PI = 3.14159;
+
+    العمليات الحسابية (Arithmetic Operations):
+    JavaScript يدعم العديد من العمليات الحسابية الأساسية مثل الجمع والطرح والضرب والقسمة والمودولو.
+
+مثال:
+
+javascript
+
+let x = 5;
+let y = 2;
+let z = x + y; // الناتج هو 7
+let w = x * y; // الناتج هو 10
+let q = x % y; // الناتج هو 1
+
+    الشروط (Conditions):
+    يمكن استخدام الشروط في JavaScript لاتخاذ قرارات مختلفة على أساس نتيجة معينة. يمكن استخدام if-else لإجراء فحوصات شرطية.
+
+مثال:
+
+javascript
+
+let num = 10;
+if (num > 0) {
+  console.log("Positive number");
+} else if (num < 0) {
+  console.log("Negative number");
+} else {
+  console.log("Zero");
+}
+
+    الحلقات (Loops):
+    يمكن استخدام الحلقات في JavaScript لتكرار العمليات المتكررة. يمكن استخدام for و while لتنفيذ حلقات مختلفة.
+
+مثال:
+
+css
+
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+
+    الوظائف (Functions):
+    يمكن استخدام الوظائف في JavaScript لتجميع كتل من الأوامر في كائن يمكن استخدامه عدة مرات. يمكن استدعاء الوظائف في أي وقت ومن أي مكان في الكود.
+
+مثال:
+
+sql
+
+function add(x, y) {
+  return x + y;
+}
+let result = add(
