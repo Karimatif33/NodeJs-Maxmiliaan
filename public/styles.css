@@ -486,3 +486,9 @@ textarea {
   background-color: tomato;
   color: #ddd;
 }
+.form-control input.invalid {
+  border-color: tomato;
+}
+.invalid {
+  border-color: tomato;
+}
