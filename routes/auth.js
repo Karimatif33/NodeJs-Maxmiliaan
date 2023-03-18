@@ -13,10 +13,12 @@ router.post(
    [
      body('email')
        .isEmail()
-       .withMessage('Please enter a valid email address.'),
+       .withMessage('Please enter a valid email address.')
+       .normalizeEmail(),
      body('password', 'Password has to be valid.')
        .isLength({ min: 5 })
        .isAlphanumeric()
+       .trim()
    ],
     authController.postLogin);
 
@@ -48,14 +50,17 @@ router.post(
       return Promise.reject('Excist email or password2')
      }
    })
-    }),
+    })
+    .normalizeEmail(),
     body('password','at least 5')
       .isLength({ min: 5 })
-      .isAlphanumeric(),
+      .isAlphanumeric()
+      .trim(),
       
       body('confirmPassword')
+      .trim()
       .custom((value, { req }) => {
-        if (value !== 'password'){
+        if (value !== req.body.password){
            throw new Error('this is dosnt match')
         }
            return true
