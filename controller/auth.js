@@ -102,15 +102,18 @@ exports.postLogin = (req, res, next) => {
             validationErrors: [],
           });
         })
-        .catch((err) => {
-          console.log(err);
-          res.redirect("/login");
+        .catch(err => {
+          const error = new  Error(err)
+    error.httpStatusCode= 500;
+    return next(error)
         });
 
       // res.redirect("/product-list");
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
+      const error = new  Error(err)
+error.httpStatusCode= 500;
+return next(error)
     });
 };
 exports.postsignup = (req, res, next) => {
@@ -154,8 +157,10 @@ exports.postsignup = (req, res, next) => {
         html: " <h1> You signd uo successfuly :) </h1>",
       });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
+      const error = new  Error(err)
+error.httpStatusCode= 500;
+return next(error)
     });
 };
 exports.postLogout = (req, res, next) => {
@@ -205,8 +210,10 @@ exports.postRest = (req, res, next) => {
           html: ` <p> Reast your Passowrd <a href="http://localhost:3000/rest/${token}">link</a> </p>`,
         });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        const error = new  Error(err)
+  error.httpStatusCode= 500;
+  return next(error)
       });
   });
 };
@@ -229,8 +236,10 @@ exports.getNwePassword = (req, res, next) => {
         passwordToken: token,
       });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
+      const error = new  Error(err)
+error.httpStatusCode= 500;
+return next(error)
     });
 };
 
@@ -257,7 +266,9 @@ exports.postNewPassword = (req, res, next) => {
     .then((result) => {
       res.redirect("/login");
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
+      const error = new  Error(err)
+error.httpStatusCode= 500;
+return next(error)
     });
 };

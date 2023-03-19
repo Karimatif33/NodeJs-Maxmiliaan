@@ -26,6 +26,7 @@ const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 
 const error404 = require('./controller/404')
+// const error500 = require('./controller/500')
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,13 +42,15 @@ app.use((req, res, next) => {
   }
   User.findById(req.session.user._id)
     .then(user => {
+      if (!user) {
+        return next()
+      }
      req.user = user;
      next();
-   
-     // app.listen(3000);  
-    })
+       })
     .catch(err => {
-      console.log(err)})
+      throw new Error(err)
+      })
 
    })
 
@@ -60,9 +63,13 @@ app.use((req, res, next) => {
 app.use(adminRoutes); 
 app.use(shopRoutes); 
 app.use(authRoutes);
+app.get('/500', error404.get500);
 
-
- 
+app.use(error404.get404);
+app.use((error, req, res, next) => {
+res.redirect('/500')
+})
+  
 
 // Auto refresh Express.js Start/////////////////////////////////////////////////////////////////////////////////////
 const livereload = require("livereload");
@@ -107,4 +114,3 @@ app.listen(3000)
 })
 
 
-app.use(error404.get404);
