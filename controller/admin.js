@@ -1,7 +1,7 @@
 const Product = require("../models/product");
 const mongoose = require('mongoose')
 
-const { validationResult } = require("express-validator/check");
+const { validationResult } = require("express-validator");
 exports.getAddProduct = (req, res, next) => {
 
   res.render("admin/edit-product", {
@@ -22,7 +22,7 @@ exports.getAddProduct = (req, res, next) => {
 exports.postAddProduct = (req, res, next) => {
   // products.push({ title: req.body.title });
   const title = req.body.title;
-  const imgeUrl = req.body.imgeUrl;
+  const imgeUrl = req.body.imge;
   const price = req.body.price;
   const description = req.body.description;
   const errors = validationResult(req);

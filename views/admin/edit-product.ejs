@@ -26,7 +26,19 @@
                         id="title"
                             value="<% if (editing || hasError) { %><%= product.title %><% } %>">
                     </div>
+                   
+                   
+                   
                     <div class="form-control">
+                        <label for="imge">Image </label>
+                        <input 
+                        type="file"
+                         name="imge"
+                          id="imge">
+                    </div>
+                    
+                    
+                   <!-- <div class="form-control">
                         <label for="imgeUrl">Image URL</label>
                         <input 
                         class="<%= validationErrors.find(e => e.param === 'imgeUrl') ? 'invalid': '' %>"
@@ -34,7 +46,9 @@
                          name="imgeUrl"
                           id="imgeUrl"
                             value="<% if (editing || hasError) { %><%= product.imgeUrl %><% } %>">
-                    </div>
+                    </div> -->
+                   
+                   
                     <div class="form-control">
                         <label for="price">Price</label>
                         <input

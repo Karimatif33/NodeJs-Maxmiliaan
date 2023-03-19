@@ -37,11 +37,14 @@ app.use(csrfProtection);
 app.use(flash()); 
 
 app.use((req, res, next) => {
+  // throw new Error('dummy dummy')
+
   if (!req.session.user){
     return next()
   }
   User.findById(req.session.user._id)
     .then(user => {
+      // throw new Error('dummy')
       if (!user) {
         return next()
       }
@@ -49,8 +52,8 @@ app.use((req, res, next) => {
      next();
        })
     .catch(err => {
-      throw new Error(err)
-      })
+      next(new Error(err))
+    })
 
    })
 
@@ -66,8 +69,11 @@ app.use(authRoutes);
 app.get('/500', error404.get500);
 
 app.use(error404.get404);
+
 app.use((error, req, res, next) => {
-res.redirect('/500')
+  res.status(500).render('500', { pageTitle: 'Database operation failed',
+  isAuthenticated: req.isLoggedIn
+});
 })
   
 
