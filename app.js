@@ -37,7 +37,7 @@ app.use(authRoutes);
 
  
   
-
+      
 // Auto refresh Express.js Start/////////////////////////////////////////////////////////////////////////////////////
 const livereload = require("livereload");
 const liveReloadServer = livereload.createServer();
