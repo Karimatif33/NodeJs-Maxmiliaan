@@ -6,7 +6,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 const MONGODB_URI = require("./.Ds_store");
 const csrf = require("csurf");
 const bodyParser = require("body-parser");
-const multer = require("multer");
+const multer = require("multer"); 
 const flash = require("connect-flash");
 const app = express();
 
@@ -21,14 +21,28 @@ const User = require("./models/user");
 
 const fileStorge = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, 'images');
   },
+  // genrated with chatGpt
   filename: (req, file, cb) => {
-    cb(null, file.filename + '-' + file.originalname);
-  },
-});
+    // const fileName = new Date().toISOString().replace(/:/g, '-') ;
+    // cb(null, fileName + '-' + file.originalname); 
+    cb(null, new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname);  
+  
+  } 
+}); 
 
-    
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false); 
+  }
+};
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -40,8 +54,11 @@ const error404 = require("./controller/404");
 // const error500 = require('./controller/500')
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(multer({ storage: fileStorge }).single("image"));
+app.use(
+  multer({ storage: fileStorge, fileFilter: fileFilter }).single("image")
+);
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/images', express.static(path.join(__dirname, "images")));
 app.use(
   session({
     secret: "my secret",
@@ -88,12 +105,10 @@ app.get("/500", error404.get500);
 app.use(error404.get404);
 
 app.use((error, req, res, next) => {
-  res
-    .status(500)
-    .render("500", {
-      pageTitle: "Database operation failed",
-      isAuthenticated: req.isLoggedIn,
-    });
+  res.status(500).render("500", {
+    pageTitle: "Database operation failed",
+    isAuthenticated: req.isLoggedIn,
+  });
 });
 
 // Auto refresh Express.js Start/////////////////////////////////////////////////////////////////////////////////////

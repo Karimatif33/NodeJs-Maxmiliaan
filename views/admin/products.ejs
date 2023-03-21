@@ -1,12 +1,14 @@
-<%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/product.css">
-    </head>
+<%- include("../includes/head") %>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
+<body class="dark-mode">
+    <%- include("../includes/header-nav") %>
+
+            <h1>My Products</h1>
+            <p>List of all the products...</p>
+
 
             <main>
-                <% if (prods.length > 0) { %>
+                <% if (prods.length> 0) { %>
                     <div class="grid">
                         <% for (let product of prods) { %>
                             <article class="card product-item">
@@ -16,32 +18,34 @@
                                     </h1>
                                 </header>
                                 <div class="card__image">
-                                    <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                                    <img src="<%= product.imgeUrl %>" alt="<%= product.title %>">
                                 </div>
                                 <div class="card__content">
-                                    <h2 class="product__price">$
-                                        <%= product.price %>
+                                    <h2 class="product__price">$<%= product.price %>
                                     </h2>
+                                </div>
+                                <div>
                                     <p class="product__description">
                                         <%= product.description %>
                                     </p>
                                 </div>
                                 <div class="card__actions">
-                                    <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn">Edit</a>
-                                    
-                                    <form action="/admin/delete-product" method="POST">
-                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-
-                                        <input type="hidden" value="<%= product._id %>" name="productId">
+                                    <a class="btn" href="/edit-product/<%= product._id %>?edit=true">Edit</a>
+                                    <form action="/delete-product" method="POST">
                                         <button class="btn" type="submit">Delete</button>
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                        <input type="hidden" value="<%= product._id %>" name="productId">
                                     </form>
-
+                                    <%- include("../includes/add-to-cart", {product:product} ) %>
+                                        <a href="/products/<%= product._id %>"" class=" btn"> Details </a>
                                 </div>
                             </article>
                             <% } %>
                     </div>
+                    
                     <% } else { %>
                         <h1>No Products Found!</h1>
                         <% } %>
             </main>
-            <%- include('../includes/end.ejs') %>
+    </body>
+    </html>

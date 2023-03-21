@@ -1,60 +1,44 @@
 <%- include("../includes/head") %>
 
-    <body>
-        <%- include("../includes/header-nav") %>
+<body class="dark-mode">
+    <%- include("../includes/header-nav") %>
 
-            <h1>My Products</h1>
-            <p>List of all the products...</p>
-
-
-            <main>
-                <% if (prods.length> 0) { %>
-                    <div class="grid">
-                        <% for (let product of prods) { %>
-                            <article class="card product-item">
-                                <header class="card__header">
-                                    <h1 class="product__title">
-                                        <%= product.title %>
-                                    </h1>
-                                </header>
-                                <div class="card__image">
-                                    <img src="<%= product.imgeUrl %>" alt="<%= product.title %>">
-                                </div>
-                                <div class="card__content">
-                                    <h2 class="product__price">$<%= product.price %>
-                                    </h2>
-                                </div>
-                                <div>
-                                    <p class="product__description">
-                                        <%= product.description %>
-                                    </p>
-
-                                </div>
-
-                                <div class="card__actions">
-
-                                    <a class="btn" href="/edit-product/<%= product._id %>?edit=true">Edit</a>
-
-                                    <form action="/delete-product" method="POST">
-                                        <button class="btn" type="submit">Delete</button>
-                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-
-                                        <input type="hidden" value="<%= product._id %>" name="productId">
-                                    </form>
+    <h1>My Products</h1>
+    <p>List of all the products...</p>
 
 
-                                    <%- include("../includes/add-to-cart", {product:product} ) %>
-                                        <a href="/products/<%= product._id %>"" class=" btn"> Details </a>
-                                </div>
-                            </article>
-                            <% } %>
-                    </div>
-                    <% } else { %>
-                        <h1>No Products Found!</h1>
-                        <% } %>
-            </main>
-
-
-    </body>
-
-    </html>
+    <main>
+        <% if (prods.length > 0) { %>
+            <div class="grid">
+                <% for (let product of prods) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= product.title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <img src="<%= product.imgeUrl %>"
+                                alt="<%= product.title %>">
+                        </div>
+                         <div>
+                            <p class="product__description"><%= product.description %></p>
+                        </div>
+                        <div class="card__content">
+                            <h2 class="product__price">$<%= product.price %></h2>
+                        </div>
+                       
+                        <div class="card__actions">
+                            <a href="/products/<%= product._id %>"" class="btn"> Details </a>
+                            <%- include("../includes/add-to-cart", {product:product} ) %>
+                            
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+            <%- include("../includes/pagination") %>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+    </main>
+    
+</body>
+</html>

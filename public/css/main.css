@@ -109,6 +109,22 @@ main {
   border-radius: 3px;
   cursor: pointer;
 }
+button.dark-mode {
+  font: inherit;
+  border: 1px solid #00695c;
+  background-color: #333;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+a .dark-mode {
+  font: inherit;
+  border: 1px solid #00695c;
+  background-color: #333;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 .btn:hover,
 .btn:active {

@@ -1,6 +1,43 @@
 <%- include("../includes/head") %>
+<style>
 
-<body>
+.orders.dark-mode {
+    /* background-color: rgb(172, 172, 172); */
+    border: 2px solid red;
+    padding: 25px;
+    margin: 10px auto;
+    width: 70%;
+    color: #fffcfc;
+}
+.orders__item li .dark-mode {
+    background-color: rgb(238, 231, 231);
+    border: 2px solid red;
+    padding: 10px;
+    margin: 10px auto;
+    width: 40%;
+    font-weight: 100;
+
+}
+.orders{
+    /* background-color: rgb(172, 172, 172); */
+    border: 2px solid red;
+    padding: 25px;
+    margin: 10px auto;
+    width: 70%;
+}
+.orders__item li {
+    background-color: rgb(238, 231, 231);
+    border: 2px solid red;
+    padding: 10px;
+    margin: 10px auto;
+    width: 40%;
+    font-weight: 100;
+    color: #111010;
+
+}
+
+</style>
+<body class="dark-mode">
     <%- include("../includes/header-nav") %>
     <main>
         <% if (orders.length <= 0) { %>
@@ -9,8 +46,8 @@
             <ul class="orders">
                 <% orders.forEach(order => { %>
                     <li class="orders__item">
-                        <h3>Order - # <%= order._id %></h3>
-                        <ul class="orders__products">
+                        <h3>Order - # <%= order._id %>  - <a href="/orders/<%= order._id %>">Invoice</a></h3>
+                        <ul class="orders__products" >
                             <% order.products.forEach(p => { %>
                                 <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
                             <% }); %>
@@ -23,4 +60,4 @@
 
 </body>
 
-</html>
+</html> 

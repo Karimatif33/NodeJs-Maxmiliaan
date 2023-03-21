@@ -3,7 +3,8 @@ const shopController = require('../controller/shop')
 const router = express.Router();
 const isAuth = require('../middleware/is-auth')
 // قفلتها وشغلتها من الا admin 
-// router.get('/admin-product', shopController.getIndex);
+// router.get('/admin-product',isAuth, shopController.getIndex);
+
 router.get('/', shopController.getProducts);
 
 router.get('/product-list', shopController.getProducts);
@@ -22,6 +23,8 @@ router.post('/create-order' ,isAuth, shopController.PostOrder);
 
 
 router.get('/orders' ,isAuth, shopController.getOrders);
+
+router.get('/orders/:orderId',isAuth, shopController.getInvoice);
 
 // router.get('/checkout', shopController.getCheckout);
 
