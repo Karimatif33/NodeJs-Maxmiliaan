@@ -1,9 +1,9 @@
 I apologize for the confusion earlier. Here is a detailed documentation for the Dashboard project:
 
-##Dashboard
+## Dashboard
 The Dashboard is a web application built with Node.js, Express, and MongoDB. It provides a user interface for managing products, orders, and users in an e-commerce application.
 
-##Features
+## Features
 The Dashboard provides the following features:
 
 Authentication and authorization using JSON Web Tokens (JWT)
