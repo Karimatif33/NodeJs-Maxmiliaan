@@ -31,11 +31,15 @@
                                 </div>
                                 <div class="card__actions">
                                     <a class="btn" href="/edit-product/<%= product._id %>?edit=true">Edit</a>
-                                    <form action="/delete-product" method="POST">
-                                        <button class="btn" type="submit">Delete</button>
+                                    
+                                    
+                                    
+                                        <button onclick="deleteProduct(this)" class="btn" type="button">Delete</button>
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="hidden" value="<%= product._id %>" name="productId">
-                                    </form>
+                                   
+                                   
+                                   
                                     <%- include("../includes/add-to-cart", {product:product} ) %>
                                         <a href="/products/<%= product._id %>"" class=" btn"> Details </a>
                                 </div>

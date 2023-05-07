@@ -17,16 +17,20 @@ router.post('/cart' ,isAuth, shopController.postCart);
 
 router.post('/cart-delete-item' , isAuth,shopController.postCartDeleteProduct);
 
+router.get('/checkout',isAuth ,shopController.getCheckout);
 
-router.post('/create-order' ,isAuth, shopController.PostOrder);
+// router.post('/create-order' ,isAuth, shopController.PostOrder);
 
 
+
+router.get('/checkout/success' ,shopController.PostOrder);
+
+router.get('/checkout/cancel' ,shopController.getCheckout);
 
 router.get('/orders' ,isAuth, shopController.getOrders);
 
 router.get('/orders/:orderId',isAuth, shopController.getInvoice);
 
-// router.get('/checkout', shopController.getCheckout);
 
 
 
