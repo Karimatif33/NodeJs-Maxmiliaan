@@ -31,42 +31,44 @@ PORT: The port number for the server (default is 3000)
 MONGODB_URI: The URI for the MongoDB database
 JWT_SECRET: The secret key for JWT authentication
 Start the server: 
-npm startThe Dashboard will be available at http://localhost:3000(or the port number you specified in the .envfile).
+npm start
+The Dashboard will be available at `http://localhost:3000` (or the port number you specified in the `.env` file).
 
 ## Directory Structure
-The Dashboard directory is organized as follows:
 
+The Dashboard directory is organized as follows:
 Dashboard/
 ├── controllers/
-│   ├── orders.js
-│   ├── products.js
-│   └── users.js
+│ ├── orders.js
+│ ├── products.js
+│ └── users.js
 ├── models/
-│   ├── order.js
-│   ├── product.js
-│   └── user.js
+│ ├── order.js
+│ ├── product.js
+│ └── user.js
 ├── public/
-│   ├── css/
-│   ├── img/
-│   └── js/
+│ ├── css/
+│ ├── img/
+│ └── js/
 ├── routes/
-│   ├── auth.js
-│   ├── orders.js
-│   ├── products.js
-│   └── users.js
+│ ├── auth.js
+│ ├── orders.js
+│ ├── products.js
+│ └── users.js
 ├── views/
-│   ├── includes/
-│   ├── orders/
-│   ├── products/
-│   ├── users/
-│   ├── error.hbs
-│   ├── index.hbs
-│   ├── layout.hbs
-│   └── login.hbs
+│ ├── includes/
+│ ├── orders/
+│ ├── products/
+│ ├── users/
+│ ├── error.hbs
+│ ├── index.hbs
+│ ├── layout.hbs
+│ └── login.hbs
 ├── .env
 ├── app.js
 ├── package.json
 └── README.md
+
 The main components of the Dashboard are:
 
 controllers/: Contains the route handlers for the application
