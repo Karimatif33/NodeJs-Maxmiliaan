@@ -36,7 +36,7 @@ npm startThe Dashboard will be available at http://localhost:3000(or the port nu
 ## Directory Structure
 The Dashboard directory is organized as follows:
 
-Copy codeDashboard/
+Dashboard/
 ├── controllers/
 │   ├── orders.js
 │   ├── products.js
