@@ -1,4 +1,4 @@
-### E-commerce Website Documentation
+## E-commerce Website Documentation
 
 This is the documentation for an e-commerce website built using Node.js, Express, MongoDB, and other related technologies. The website allows users to browse products, add them to the cart, checkout, and make payments. It also includes an admin dashboard for managing products, orders, and user accounts.
 Table of Contents
@@ -45,7 +45,6 @@ To use the admin dashboard, follow these steps:
 
 The project is structured as follows:
 
-kotlin
 
 ├── controllers
 │   ├── auth.js
