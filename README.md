@@ -1,4 +1,4 @@
-E-commerce Website Documentation
+### E-commerce Website Documentation
 
 This is the documentation for an e-commerce website built using Node.js, Express, MongoDB, and other related technologies. The website allows users to browse products, add them to the cart, checkout, and make payments. It also includes an admin dashboard for managing products, orders, and user accounts.
 Table of Contents
@@ -15,7 +15,7 @@ Table of Contents
     Middleware
     Conclusion
 
-Installation
+## Installation
 
 To install the project, follow these steps:
 
@@ -24,7 +24,7 @@ To install the project, follow these steps:
     Create a .env file in the root directory and add the necessary environment variables (see .env.example for reference).
     Start the server using npm start.
 
-Usage
+## Usage
 
 To use the website, follow these steps:
 
@@ -41,7 +41,7 @@ To use the admin dashboard, follow these steps:
     Log in as an admin using the login page.
     Manage products, orders, and user accounts using the dashboard.
 
-Project Structure
+## Project Structure
 
 The project is structured as follows:
 
